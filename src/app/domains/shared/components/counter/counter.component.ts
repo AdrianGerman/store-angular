@@ -1,5 +1,4 @@
 import { Component, Input, SimpleChange } from '@angular/core';
-import { repeat } from 'rxjs';
 
 @Component({
   selector: 'app-counter',

@@ -1,13 +1,8 @@
 <div class="grid grid-cols-3 gap-8">
 
-  <app-product title="Producto 1" [price]="12"
-    img="https://picsum.photos/600/640?r=23" (addToCart)="fromChild($event)" />
-  <app-product title="Producto 2" [price]="12"
-    img="https://picsum.photos/600/640?r=22" (addToCart)="fromChild($event)" />
-  <app-product title="Producto 3" [price]="12"
-    img="https://picsum.photos/600/640?r=89" (addToCart)="fromChild($event)" />
-  <app-product title="Producto 4" [price]="12"
-    img="https://picsum.photos/600/640?r=56" (addToCart)="fromChild($event)" />
-  <app-product title="Producto 5" [price]="12"
-    img="https://picsum.photos/600/640?r=87" (addToCart)="fromChild($event)" />
+  <app-product
+    *ngFor="let product of products()"
+    [product]="product"
+    (addToCart)="fromChild($event)" />
+
 </div>

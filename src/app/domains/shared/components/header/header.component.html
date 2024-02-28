@@ -33,7 +33,7 @@
       <button class="p-2 border rounded relative" (click)="toogleSideMenu()">
         <div
           class="absolute -top-2 -left-2 rounded h-5 w-5 bg-black text-white text-xs">{{
-          cart.length }}</div>
+          cart().length }}</div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -74,7 +74,7 @@
 
   <div
     class="flex justify-between items-center bg-slate-200 rounded-md text-center p-2 my-4"
-    *ngFor="let product of cart">
+    *ngFor="let product of cart()">
 
     <!-- record 1 -->
     <td class="p-2">

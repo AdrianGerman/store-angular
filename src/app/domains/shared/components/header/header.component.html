@@ -84,7 +84,8 @@
       <div class="font-medium text-gray-800">{{ product.title }}</div>
     </td>
     <td class="p-2">
-      <div class="text-left font-medium text-green-500">${{ product.price
+      <div class="text-left font-medium text-green-500">{{ product.price |
+        currency:'$'
         }}</div>
     </td>
     <td class="p-2">
@@ -104,8 +105,8 @@
   </div>
   <div>
     <p
-      class="fixed bottom-0 w-full py-12 text-xl font-bold">Total: $
-      {{ total() }}</p>
+      class="fixed bottom-0 w-full py-12 text-xl font-bold">Total:
+      {{ total() | currency:'$' }}</p>
   </div>
 
   <!-- <div class="pt-4 flex flex-col">

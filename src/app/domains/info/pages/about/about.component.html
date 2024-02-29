@@ -1,15 +1,13 @@
-<div class="px-10">
-  <h1 class="text-lg font-bold">About</h1>
-  <p class="text-xs">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-    Minima architecto
-    aliquid ut commodi eum tempore quidem saepe itaque, cumque voluptatibus?
-    Ipsa possimus tempora quisquam laboriosam voluptas dolore similique, esse
-    doloribus!</p>
-  <p class="text-xs">Número de clientes =>
-    <app-counter [duration]="duration()" [message]="message()"
-      *ngIf="duration() > 0" />
-  </p>
-  <div>
-    <app-wave-audio audioUrl="assets/audio.mp3" />
-  </div>
+ <h1 class="text-lg font-bold">About</h1>
+<p class="text-xs">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+  Minima architecto
+  aliquid ut commodi eum tempore quidem saepe itaque, cumque voluptatibus?
+  Ipsa possimus tempora quisquam laboriosam voluptas dolore similique, esse
+  doloribus!</p>
+<p class="text-xs">Número de clientes =>
+  <app-counter [duration]="duration()" [message]="message()"
+    *ngIf="duration() > 0" />
+</p>
+<div>
+  <app-wave-audio audioUrl="assets/audio.mp3" />
 </div>

@@ -13,27 +13,49 @@
       <ul class="flex space-x-6">
         <li>
           <a
-            href="#"
+            routerLink="/"
             class="block underline hover:underline"
             aria-current="page">Home</a>
-        </li>
-        <li>
-          <a
-            href="#"
-            class="block hover:underline">About</a>
-        </li>
-        <li>
-          <a
-            href="#"
-            class="block hover:underline">Services</a>
-        </li>
-      </ul>
+          <li>
+            <a
+              routerLink="/about"
+              class="block hover:underline">About</a>
+          </li>
+          <li>
+            <a
+              routerLink="/services"
+              class="block hover:underline">Services</a>
+          </li>
+        </ul>
+      </div>
+      <div class="flex items-center">
+        <button class="p-2 border rounded relative" (click)="toogleSideMenu()">
+          <div
+            class="absolute -top-2 -left-2 rounded h-5 w-5 bg-black text-white text-xs">{{
+            cart().length }}</div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+          </svg>
+        </button>
+      </div>
     </div>
-    <div class="flex items-center">
-      <button class="p-2 border rounded relative" (click)="toogleSideMenu()">
-        <div
-          class="absolute -top-2 -left-2 rounded h-5 w-5 bg-black text-white text-xs">{{
-          cart().length }}</div>
+  </nav>
+
+  <div
+    class="fixed border-l-4 top-0 right-0 bg-red z-40 w-72 h-screen p-4 overflow-y-auto transition-transform bg-white"
+    [class.translate-x-full]="hideSideMenu()">
+    <div class="flex justify-between items-center">
+      <p class="text-xl">My Cart</p>
+      <button (click)="toogleSideMenu()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -44,72 +66,49 @@
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
-            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+            d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>
-  </div>
-</nav>
 
-<div
-  class="fixed border-l-4 top-0 right-0 bg-red z-40 w-72 h-screen p-4 overflow-y-auto transition-transform bg-white"
-  [class.translate-x-full]="hideSideMenu()">
-  <div class="flex justify-between items-center">
-    <p class="text-xl">My Cart</p>
-    <button (click)="toogleSideMenu()">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="w-6 h-6">
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
-  </div>
+    <div
+      class="flex justify-between items-center bg-slate-200 rounded-md text-center p-2 my-4"
+      *ngFor="let product of cart()">
 
-  <div
-    class="flex justify-between items-center bg-slate-200 rounded-md text-center p-2 my-4"
-    *ngFor="let product of cart()">
+      <!-- record 1 -->
+      <td class="p-2">
+        <img class="w-6 h-6" [src]="product.images[0]" alt="product.title">
+      </td>
+      <td class="p-2">
+        <div class="font-medium text-gray-800">{{ product.title }}</div>
+      </td>
+      <td class="p-2">
+        <div class="text-left font-medium text-green-500">{{ product.price |
+          currency:'$'
+          }}</div>
+      </td>
+      <td class="p-2">
+        <div class="flex justify-center">
+          <button>
+            <svg
+              class="h-8 w-8 rounded-full p-1 hover:text-red-600"
+              fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+            </svg>
+          </button>
+        </div>
+      </td>
+    </div>
+    <div>
+      <p
+        class="fixed bottom-0 w-full py-12 text-xl font-bold">Total:
+        {{ total() | currency:'$' }}</p>
+    </div>
 
-    <!-- record 1 -->
-    <td class="p-2">
-      <img class="w-6 h-6" [src]="product.images[0]" alt="product.title">
-    </td>
-    <td class="p-2">
-      <div class="font-medium text-gray-800">{{ product.title }}</div>
-    </td>
-    <td class="p-2">
-      <div class="text-left font-medium text-green-500">{{ product.price |
-        currency:'$'
-        }}</div>
-    </td>
-    <td class="p-2">
-      <div class="flex justify-center">
-        <button>
-          <svg
-            class="h-8 w-8 rounded-full p-1 hover:text-red-600"
-            fill="none" stroke="currentColor" viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              stroke-width="2"
-              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-          </svg>
-        </button>
-      </div>
-    </td>
-  </div>
-  <div>
-    <p
-      class="fixed bottom-0 w-full py-12 text-xl font-bold">Total:
-      {{ total() | currency:'$' }}</p>
-  </div>
-
-  <!-- <div class="pt-4 flex flex-col">
+    <!-- <div class="pt-4 flex flex-col">
     <div class="flex justify-between items-center space-y-2"
       *ngFor="let product of cart">
       <div>
@@ -119,4 +118,4 @@
       <p>{{ product.price }}</p>
     </div>
   </div> -->
-</div>
+  </div>

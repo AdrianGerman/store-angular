@@ -2,7 +2,7 @@
   <div
     class="container mx-auto w-full flex flex-wrap items-center justify-between py-4">
     <div class="flex items-center space-x-8">
-      <a href="https://flowbite.com/" class="flex items-center ">
+      <a routerLink="/about" class="flex items-center ">
         <img
           src="https://github.com/AdrianGerman/AdrianGerman/assets/107493996/ba7d1cf9-8e7d-4c79-b207-4a572a383ce9"
           class="h-6 mr-3"
@@ -14,16 +14,20 @@
         <li>
           <a
             routerLink="/"
-            class="block underline hover:underline"
+            routerLinkActive="underline"
+            [routerLinkActiveOptions]="{exact: true}"
+            class="block hover:underline"
             aria-current="page">Home</a>
           <li>
             <a
               routerLink="/about"
+              routerLinkActive="underline"
               class="block hover:underline">About</a>
           </li>
           <li>
             <a
               routerLink="/services"
+              routerLinkActive="underline"
               class="block hover:underline">Services</a>
           </li>
         </ul>

@@ -8,7 +8,7 @@
           class="h-6 mr-3"
           alt="Flowbite Logo" />
         <span
-          class="self-center text-xl font-semibold whitespace-nowrap">AnguStore</span>
+        class="self-center text-xl font-semibold whitespace-nowrap">AnguStore</span>
       </a>
       <ul class="flex space-x-6">
         <li>
@@ -17,18 +17,18 @@
             routerLinkActive="underline"
             [routerLinkActiveOptions]="{exact: true}"
             class="block hover:underline"
-            aria-current="page">Home</a>
+          aria-current="page">Home</a>
           <li>
             <a
               routerLink="/about"
               routerLinkActive="underline"
-              class="block hover:underline">About</a>
+            class="block hover:underline">About</a>
           </li>
           <li>
             <a
               routerLink="/services"
               routerLinkActive="underline"
-              class="block hover:underline">Services</a>
+            class="block hover:underline">Services</a>
           </li>
         </ul>
       </div>
@@ -36,7 +36,7 @@
         <button class="p-2 border rounded relative" (click)="toogleSideMenu()">
           <div
             class="absolute -top-2 -left-2 rounded h-5 w-5 bg-black text-white text-xs">{{
-            cart().length }}</div>
+          cart().length }}</div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -75,41 +75,42 @@
       </button>
     </div>
 
-    <div
-      class="flex justify-between items-center bg-slate-200 rounded-md text-center p-2 my-4"
-      *ngFor="let product of cart()">
-
-      <!-- record 1 -->
-      <td class="p-2">
-        <img class="w-6 h-6" [src]="product.images[0]" alt="product.title">
-      </td>
-      <td class="p-2">
-        <div class="font-medium text-gray-800">{{ product.title }}</div>
-      </td>
-      <td class="p-2">
-        <div class="text-left font-medium text-green-500">{{ product.price |
-          currency:'$'
+    @for (product of cart(); track product) {
+      <div
+        class="flex justify-between items-center bg-slate-200 rounded-md text-center p-2 my-4"
+        >
+        <!-- record 1 -->
+        <td class="p-2">
+          <img class="w-6 h-6" [src]="product.images[0]" alt="product.title">
+        </td>
+        <td class="p-2">
+          <div class="font-medium text-gray-800">{{ product.title }}</div>
+        </td>
+        <td class="p-2">
+          <div class="text-left font-medium text-green-500">{{ product.price |
+            currency:'$'
           }}</div>
-      </td>
-      <td class="p-2">
-        <div class="flex justify-center">
-          <button>
-            <svg
-              class="h-8 w-8 rounded-full p-1 hover:text-red-600"
-              fill="none" stroke="currentColor" viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                stroke-width="2"
+        </td>
+        <td class="p-2">
+          <div class="flex justify-center">
+            <button>
+              <svg
+                class="h-8 w-8 rounded-full p-1 hover:text-red-600"
+                fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  stroke-width="2"
                 d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-            </svg>
-          </button>
-        </div>
-      </td>
-    </div>
+              </svg>
+            </button>
+          </div>
+        </td>
+      </div>
+    }
     <div>
       <p
         class="fixed bottom-0 w-full py-12 text-xl font-bold">Total:
-        {{ total() | currency:'$' }}</p>
+      {{ total() | currency:'$' }}</p>
     </div>
 
     <!-- <div class="pt-4 flex flex-col">
@@ -122,4 +123,4 @@
       <p>{{ product.price }}</p>
     </div>
   </div> -->
-  </div>
+</div>
